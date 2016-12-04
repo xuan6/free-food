@@ -12,6 +12,8 @@ class EventDetailViewController: UIViewController {
     
     //this view will show modally like a pop up
     
+    var eventSelected : Event = Event()
+    
     @IBOutlet weak var eventName: UILabel!//the title of the event
     
     @IBOutlet weak var eventFoods: UILabel! //a list of food served, can go mutiple lines
@@ -24,30 +26,43 @@ class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var detailButton: UIButton! //optional, could be hidden if no url available
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         detailButton.isHidden = true //by default, no url link available, so the button is hidden
+        showEventDetails()
         //check url, when available, isHidden = false
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
+    func showEventDetails() {
+        // print(eventSelected.eventName)
+        eventName.text = eventSelected.eventName
+        eventFoods.text = eventSelected.eventFoods
+        eventTime.text = eventSelected.eventTime
+        eventLocation.text = eventSelected.eventLocation
+        eventDescription.text = eventSelected.eventDescription
+        if (eventSelected.eventUrl.characters.count > 0) {
+            detailButton.isHidden = false
+        }
+    }
+    
+    @IBAction func RSVPButton(_ sender: Any) {
+        self.performSegue(withIdentifier: "RSVPVC", sender: self)
+    }
+    
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "RSVPVC" {
+            let viewController = segue.destination as! WebViewController
+            viewController.urlLink = eventSelected.eventUrl
+        }
     }
-    */
-
 }
