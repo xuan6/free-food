@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Firebase
 
 class PostEventTableViewController: UITableViewController {
     
+    var ref: FIRDatabaseReference!
+    
+    //var foodItems = [Food]() // of a particular event added by host
     @IBOutlet weak var eventName: UITextField!
     
     @IBOutlet weak var pickerTextField: UITextField!
@@ -20,6 +24,7 @@ class PostEventTableViewController: UITableViewController {
     @IBOutlet weak var endPickerTextField: UITextField!
     
     @IBAction func endPickDateAction(_ sender: Any) {
+        
     }
     @IBOutlet weak var eventLocation: UITextField!
     
@@ -30,6 +35,45 @@ class PostEventTableViewController: UITableViewController {
     @IBOutlet weak var eventDescription: UITextField!
     
     @IBAction func submitEvent(_ sender: Any) {
+        
+        if !eventName.text!.isEmpty {
+            
+            let data =  [Constants.Event2.eventName: eventName.text! as String]
+            storeInDB(data: data)
+            eventName.resignFirstResponder()
+ 
+        }
+    }
+    
+    func storeInDB(data: [String: String]) {
+        var copyData = data
+        
+        if !eventLocation.text!.isEmpty {
+            copyData[Constants.Event2.eventLocation] = eventLocation.text! as String
+        } else {
+            let alertController = UIAlertController(title: "Required Section", message: "Location is a required field", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
+        if !eventZipcode.text!.isEmpty {
+            copyData[Constants.Event2.evventZipCode] = eventZipcode.text! as String
+        } /*else {
+            // create an alert - > Reqd field
+            let alertController = UIAlertController(title: "Required Section", message: "Zipcode is a required field", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alertController, animated: true, completion: nil)
+        }*/
+        
+        if !eventDescription.text!.isEmpty {
+            copyData[Constants.Event2.eventDescription] = eventDescription.text! as String
+        }
+        
+        if !eventURL.text!.isEmpty {
+            copyData[Constants.Event2.eventUrl] = eventURL.text! as String
+        }
+
+        ref.child("Events").childByAutoId().setValue(copyData)
     }
     
     let foodItems = ["food1","food2","food3","food4","food5"]
@@ -39,6 +83,7 @@ class PostEventTableViewController: UITableViewController {
         
         //create a reuseable cell for each food item displayed in the food list
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "foodItemCell")
+        
         //remove additional unecessary cells
         self.tableView.tableFooterView = UIView(frame:CGRect.zero)
         //set up text color
@@ -50,7 +95,12 @@ class PostEventTableViewController: UITableViewController {
         let pickerView = UIDatePicker()
         pickerTextField.inputView = pickerView
         endPickerTextField.inputView = pickerView
+        
+        
+        // connecting to firebase databse
+        ref = FIRDatabase.database().reference()
     }
+    
     
     //2 sections in total
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -81,8 +131,9 @@ class PostEventTableViewController: UITableViewController {
                 
                 //fetch the corresponding name of the food item and populate many rows
                 cell.textLabel?.text = foodItems[indexPath.row]
+                
                 //disable the selected row highlight
-                                return cell
+                return cell
             }else{ //for the 1st section (the more static one)
 //                let cellS = super.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 //                cellS.selectionStyle = .none

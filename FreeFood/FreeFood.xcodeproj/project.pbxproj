@@ -10,6 +10,7 @@
 		69EFDD696CD293DDC52846EA /* Pods_FreeFoodTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47AAAF397AD89F6A0DE2B348 /* Pods_FreeFoodTests.framework */; };
 		8667222DA24A37B2D8F10A01 /* Pods_FreeFood.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A9BFC80D9BC259A76BFCE5 /* Pods_FreeFood.framework */; };
 		B41E2B581DF3C2F700D65AAF /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = B41E2B571DF3C2F700D65AAF /* Event.swift */; };
+		B41E2B5E1DF40CB800D65AAF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B41E2B5D1DF40CB800D65AAF /* GoogleService-Info.plist */; };
 		B60167DD1DED20660019A014 /* PickFoodTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B60167DC1DED20660019A014 /* PickFoodTableViewController.swift */; };
 		B61E04731DEB91A3001CB781 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61E04721DEB91A3001CB781 /* EventDetailViewController.swift */; };
 		B6263F5E1DED6C46000244B6 /* PostEventTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6263F5D1DED6C46000244B6 /* PostEventTableViewController.swift */; };
@@ -54,6 +55,8 @@
 		97A9BFC80D9BC259A76BFCE5 /* Pods_FreeFood.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFood.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A45A001F9F6D88C3673704E6 /* Pods_FreeFoodUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FreeFoodUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41E2B571DF3C2F700D65AAF /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		B41E2B5D1DF40CB800D65AAF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B4B785351DF4AF9E00BF3DB8 /* FreeFood.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FreeFood.entitlements; sourceTree = "<group>"; };
 		B60167DC1DED20660019A014 /* PickFoodTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PickFoodTableViewController.swift; path = ../PickFoodTableViewController.swift; sourceTree = "<group>"; };
 		B61E04721DEB91A3001CB781 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		B6263F5D1DED6C46000244B6 /* PostEventTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostEventTableViewController.swift; sourceTree = "<group>"; };
@@ -155,6 +158,7 @@
 		B628D3931DEB84EA0024A819 /* FreeFood */ = {
 			isa = PBXGroup;
 			children = (
+				B4B785351DF4AF9E00BF3DB8 /* FreeFood.entitlements */,
 				B628D3941DEB84EA0024A819 /* AppDelegate.swift */,
 				B628D3981DEB84EA0024A819 /* Main.storyboard */,
 				B6263F5F1DED8EC9000244B6 /* SettingTableViewController.swift */,
@@ -169,6 +173,7 @@
 				B628D3C21DEB85650024A819 /* FoodsTableViewController.swift */,
 				B628D39B1DEB84EA0024A819 /* Assets.xcassets */,
 				B628D39D1DEB84EA0024A819 /* LaunchScreen.storyboard */,
+				B41E2B5D1DF40CB800D65AAF /* GoogleService-Info.plist */,
 				B628D3A01DEB84EA0024A819 /* Info.plist */,
 			);
 			path = FreeFood;
@@ -269,8 +274,16 @@
 				TargetAttributes = {
 					B628D3901DEB84EA0024A819 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = J8HX8W773Z;
+						DevelopmentTeam = WN3QYBSRHG;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 0;
+							};
+						};
 					};
 					B628D3A41DEB84EA0024A819 = {
 						CreatedOnToolsVersion = 8.0;
@@ -312,6 +325,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B628D39F1DEB84EA0024A819 /* LaunchScreen.storyboard in Resources */,
+				B41E2B5E1DF40CB800D65AAF /* GoogleService-Info.plist in Resources */,
 				B628D39C1DEB84EA0024A819 /* Assets.xcassets in Resources */,
 				B628D39A1DEB84EA0024A819 /* Main.storyboard in Resources */,
 			);
@@ -642,7 +656,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J8HX8W773Z;
+				CODE_SIGN_ENTITLEMENTS = FreeFood/FreeFood.entitlements;
+				DEVELOPMENT_TEAM = WN3QYBSRHG;
 				INFOPLIST_FILE = FreeFood/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -658,7 +673,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = J8HX8W773Z;
+				CODE_SIGN_ENTITLEMENTS = FreeFood/FreeFood.entitlements;
+				DEVELOPMENT_TEAM = WN3QYBSRHG;
 				INFOPLIST_FILE = FreeFood/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

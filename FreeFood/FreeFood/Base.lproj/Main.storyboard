@@ -685,7 +685,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Mye-qf-jTt" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Food" image="Food" id="jfT-rD-UTq"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rfn-HF-kEn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="rfn-HF-kEn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -704,7 +704,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q0u-am-0xo" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Events" image="Time" id="Ojg-df-KEd"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r2t-gl-HZU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="r2t-gl-HZU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -767,7 +767,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="98105" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cI3-5L-b2g">
-                                                    <rect key="frame" x="96" y="13.5" width="46" height="17"/>
+                                                    <rect key="frame" x="96" y="14" width="46" height="17"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -804,7 +804,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="i4k-fl-hra" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Add Event" image="Post" id="HrD-qB-laM"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AkZ-UT-5b7">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="AkZ-UT-5b7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -823,7 +823,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lbl-cp-CVU" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Setting" image="Setting" id="Vab-bY-E9u"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="pbg-Xe-utU">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="pbg-Xe-utU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

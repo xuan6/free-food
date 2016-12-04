@@ -28,4 +28,17 @@ class Event{
         self.eventDescription = eventDescription
         self.eventUrl = eventUrl
     }
+    
+}
+
+struct Constants {
+    struct Event2 {
+        static let eventName = "Name"
+        static let eventLocation = "Location"
+        static let eventTime = "Time"
+        static let eventFoods = [Food]()
+        static let eventDescription = "Description"
+        static let eventUrl = "Url"
+        static let evventZipCode = "Zipcode"
+    }
 }

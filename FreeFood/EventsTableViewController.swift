@@ -9,7 +9,7 @@
 
 import UIKit
 import SwiftyJSON
-
+import Firebase
 //test data goes here
 
 
@@ -29,8 +29,12 @@ class EventsTableViewController: UITableViewController {
     
     var eventSelected : Event = Event()
     var events = [Event]()
+    var events2 : [FIRDataSnapshot]! = []
     var eventsLink = "https://raw.githubusercontent.com/zoexiong/free-food/Z_branch/FreeFood/events.json"
     var refresher: UIRefreshControl!
+    
+    var ref: FIRDatabaseReference!
+    fileprivate var _refHandle: FIRDatabaseHandle!
     
     func loadData() {
         
@@ -85,7 +89,7 @@ class EventsTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        loadData()
+       // loadData()
         
         refresher = UIRefreshControl()
         refresher.attributedTitle = NSAttributedString(string: "Pull to Refresh")
@@ -93,6 +97,7 @@ class EventsTableViewController: UITableViewController {
         refresher.addTarget(self, action: #selector(FoodsTableViewController.refresh), for: UIControlEvents.valueChanged)
         tableView.addSubview(refresher)
         
+        configureDataBase()
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -111,6 +116,16 @@ class EventsTableViewController: UITableViewController {
         refresher.endRefreshing()
     }
     
+    func configureDataBase() {
+        
+        ref = FIRDatabase.database().reference()
+        
+        _refHandle = ref.child("Events").observe(.childAdded) { (snapshot: FIRDataSnapshot) in
+            self.events2.append(snapshot)
+        }
+
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -125,7 +140,7 @@ class EventsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return events.count
+        return events2.count
     }
     
     
@@ -138,11 +153,21 @@ class EventsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath) as! EventTableViewCell
         
-        let event = events[indexPath.row]
+        let eventSnapshot : FIRDataSnapshot! = events2[indexPath.row]
+        
+        let event = eventSnapshot.value as! [String:String]
+        let eventNam = event[Constants.Event2.eventName] ?? "[name]"
+        let eventLoc = event[Constants.Event2.eventLocation] ?? "[text]"
+        
+        
+        cell.eventName.text = eventNam
+        cell.eventLocation.text = eventLoc
+        
+        /*let event = events[indexPath.row]
         cell.eventName.text = event.eventName
         cell.eventLocation.text = event.eventLocation
         cell.eventTime.text = event.eventTime
-        cell.eventFoods.text = event.eventFoods
+        cell.eventFoods.text = event.eventFoods*/
         
         return cell
     }
