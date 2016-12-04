@@ -37,8 +37,6 @@ class PickFoodTableViewController: UITableViewController {
         
         //create a reuseable cell for each food item displayed in the food list
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "itemCell")
-        //remove additional unecessary cells
-        self.tableView.tableFooterView = UIView(frame:CGRect.zero)
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
