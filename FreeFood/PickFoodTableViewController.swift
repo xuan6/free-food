@@ -9,6 +9,16 @@
 
 import UIKit
 
+extension UIColor {
+    convenience init(red: Int, green: Int, blue: Int) {
+        let newRed = CGFloat(red)/255
+        let newGreen = CGFloat(green)/255
+        let newBlue = CGFloat(blue)/255
+        
+        self.init(red: newRed, green: newGreen, blue: newBlue, alpha: 1.0)
+    }
+}
+
 class PickFoodTableViewController: UITableViewController {
     
     var foodList=["Coke","Cookie","Pizza","Rice","Pasta","Sandwich","Hamburger","Burrito","Salad"]
@@ -38,6 +48,7 @@ class PickFoodTableViewController: UITableViewController {
         //create a reuseable cell for each food item displayed in the food list
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "itemCell")
         
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -65,6 +76,11 @@ class PickFoodTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
         cell.textLabel?.text = foodList[indexPath.row]
+        let bgColorView = UIView()
+        bgColorView.backgroundColor = UIColor(red: 122, green: 216, blue: 250)
+
+        cell.selectedBackgroundView = bgColorView
+        
         return cell
     }
     
