@@ -29,6 +29,9 @@ class PickFoodTableViewController: UITableViewController {
         })
     }
     
+    @IBAction func cancel(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+    }
     @IBAction func save(_ sender: Any) {
         setSelectedItems()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
@@ -70,8 +73,6 @@ class PickFoodTableViewController: UITableViewController {
                 //print(tableView.indexPathsForSelectedRows ?? [])
             }
         }
-        let inset = UIEdgeInsetsMake(20, 0, 0, 0)
-        self.tableView.contentInset = inset
         
         navigationController?.setToolbarHidden(false, animated: false)
         

@@ -473,7 +473,7 @@
                                                     </constraints>
                                                     <state key="normal" title="Button" image="Edit"/>
                                                     <connections>
-                                                        <segue destination="c44-hQ-JOa" kind="presentation" id="SCd-am-cpb"/>
+                                                        <segue destination="CVd-Zx-e4V" kind="presentation" id="SCd-am-cpb"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -485,7 +485,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="c44-hQ-JOa" kind="presentation" id="1XS-0R-9FK"/>
+                                            <segue destination="CVd-Zx-e4V" kind="presentation" id="1XS-0R-9FK"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -649,7 +649,7 @@
             </objects>
             <point key="canvasLocation" x="3488.8000000000002" y="-394.45277361319341"/>
         </scene>
-        <!--Pick Food Table View Controller-->
+        <!--Tap to Pick-->
         <scene sceneID="jta-vO-j2Z">
             <objects>
                 <tableViewController id="c44-hQ-JOa" customClass="PickFoodTableViewController" customModule="FreeFood" customModuleProvider="target" sceneMemberID="viewController">
@@ -658,27 +658,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.96457690000534058" green="0.96461945772171021" blue="0.97275429964065552" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="sectionIndexBackgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="DGe-9Y-GNI">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <items>
-                                <navigationItem title="Tap to Pick" id="ShH-eb-dhd">
-                                    <barButtonItem key="leftBarButtonItem" title="Add New Food" id="g3a-qD-I4e">
-                                        <connections>
-                                            <action selector="addNewFood:" destination="c44-hQ-JOa" id="VNr-ja-5IF"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem key="rightBarButtonItem" title="Done" id="1aY-Ue-vak">
-                                        <connections>
-                                            <action selector="save:" destination="c44-hQ-JOa" id="QOm-HC-fOv"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </navigationItem>
-                            </items>
-                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="itemCell" selectionStyle="none" indentationWidth="10" id="trn-mj-WQt">
-                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="trn-mj-WQt" id="Xf2-jK-eNJ">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -691,10 +673,30 @@
                             <outlet property="delegate" destination="c44-hQ-JOa" id="HZs-Cy-0ZE"/>
                         </connections>
                     </tableView>
+                    <toolbarItems>
+                        <barButtonItem title="Add New Food" id="g3a-qD-I4e">
+                            <connections>
+                                <action selector="addNewFood:" destination="c44-hQ-JOa" id="VNr-ja-5IF"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Tap to Pick" id="ShH-eb-dhd">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="bn7-ca-qCx">
+                            <connections>
+                                <action selector="cancel:" destination="c44-hQ-JOa" id="rz6-D3-t80"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="1aY-Ue-vak">
+                            <connections>
+                                <action selector="save:" destination="c44-hQ-JOa" id="QOm-HC-fOv"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cBC-LN-cjY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5116" y="394"/>
+            <point key="canvasLocation" x="6264.8000000000002" y="393.55322338830587"/>
         </scene>
         <!--Food-->
         <scene sceneID="LPS-bi-JZf">
@@ -853,6 +855,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7U-jE-aKh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1913" y="935"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TlV-9y-Vvg">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CVd-Zx-e4V" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yjV-42-3bx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="c44-hQ-JOa" kind="relationship" relationship="rootViewController" id="C19-1C-D3f"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zk-7n-aXh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5325.6000000000004" y="393.55322338830587"/>
         </scene>
     </scenes>
     <resources>
