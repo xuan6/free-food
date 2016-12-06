@@ -46,6 +46,12 @@ class SettingTableViewController: UITableViewController {
         return super.tableView(tableView, cellForRowAt: indexPath)
     }
     
+    //    disable highlight for each row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.

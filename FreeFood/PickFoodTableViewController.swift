@@ -35,9 +35,7 @@ class PickFoodTableViewController: UITableViewController {
         self.dismiss(animated: true, completion: {})
     }
     
-    
     @IBAction func addNewFood(_ sender: Any) {
-        
         let alertController = UIAlertController(title: "Add New Food", message: "Please enter new food name.", preferredStyle: UIAlertControllerStyle.alert)
         let newFoodTextField = UITextField()
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
@@ -72,7 +70,10 @@ class PickFoodTableViewController: UITableViewController {
                 //print(tableView.indexPathsForSelectedRows ?? [])
             }
         }
+        let inset = UIEdgeInsetsMake(20, 0, 0, 0)
+        self.tableView.contentInset = inset
         
+        navigationController?.setToolbarHidden(false, animated: false)
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -120,6 +121,16 @@ class PickFoodTableViewController: UITableViewController {
         }
     }
     
+//     func viewWillAppear(animated: Bool) {
+//        super.viewWillAppear(animated);
+//        self.navigationController?.setToolbarHidden(false, animated: animated)
+//    }
+//    
+//     func viewWillDisappear(animated: Bool) {
+//        super.viewWillDisappear(animated);
+//        self.navigationController?.setToolbarHidden(true, animated: animated)
+//    }
+//    
     /*
      // Override to support conditional editing of the table view.
      override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

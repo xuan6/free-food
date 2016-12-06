@@ -248,6 +248,6 @@ class FoodList{
     }
 }
 
-var foodList = FoodList(["Coke","Cookie","Pizza","Rice","Pasta","Sandwich","Hamburger","Burrito","Salad"])
+var foodList = FoodList(["Assorted Desserts","Barbeque","Bread","Burrito","Burger","Cake","Coffee","Coke","Cookie","Donut","Fries","Fruit","Hotdog","Ice Cream","Juice","Muffin","Pasta","Pastry","Pie","Pizza","Rice","Sandwich","Salad","Taco"])
 
 
