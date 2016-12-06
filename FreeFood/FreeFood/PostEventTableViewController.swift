@@ -178,7 +178,7 @@ class PostEventTableViewController: UITableViewController {
                 
                 //fetch the corresponding name of the food item and populate many rows
                 cell.textLabel?.text = foodList.list[selected.items[indexPath.row]]
-                //disable the selected row highlight
+                
                 return cell
             }else{ //for the 1st section (the more static one)
                 //                let cellS = super.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -207,11 +207,11 @@ class PostEventTableViewController: UITableViewController {
             return super.tableView(tableView, indentationLevelForRowAt: indexPath)
         }
     }
-    //disable highlight for each row
-    //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        //Change the selected background view of the cell.
-    //        tableView.deselectRow(at: indexPath, animated: true)
-    //    }
+//    disable highlight for each row
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Change the selected background view of the cell.
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
