@@ -150,16 +150,21 @@ class PostEventTableViewController: UITableViewController {
             if indexPath.section == 1 {
                 //when it reaches the dynamic section, generate the reusable cell identified by "foodItemCell", which we init it at the beginning of this code file
                 let cell = tableView.dequeueReusableCell(withIdentifier: "foodItemCell",for: indexPath)
-                //disable cell selection highlight
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
                 
                 //fetch the corresponding name of the food item and populate many rows
                 cell.textLabel?.text = foodItems[indexPath.row]
                 //disable the selected row highlight
+                cell.selectionStyle = .none
                 return cell
             }else{ //for the 1st section (the more static one)
-                //                let cellS = super.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-                //                cellS.selectionStyle = .none
+                //disable selected highlight
+                
+                
+//                let bgColorView = UIView()
+//                bgColorView.backgroundColor = UIColor.white
+//                cell.selectedBackgroundView = bgColorView
+
+                
                 return super.tableView(tableView, cellForRowAt: indexPath)
             }
     }

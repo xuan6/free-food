@@ -78,7 +78,6 @@ class PickFoodTableViewController: UITableViewController {
         cell.textLabel?.text = foodList[indexPath.row]
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 168, green: 227, blue: 255)
-
         cell.selectedBackgroundView = bgColorView
         
         return cell
