@@ -21,23 +21,41 @@ extension UIColor {
 
 class PickFoodTableViewController: UITableViewController {
     
-    var foodList=["Coke","Cookie","Pizza","Rice","Pasta","Sandwich","Hamburger","Burrito","Salad"]
+    func do_table_refresh()
+    {
+        DispatchQueue.main.async(execute: {
+            self.tableView.reloadData()
+            return
+        })
+    }
     
     @IBAction func save(_ sender: Any) {
-        
+        setSelectedItems()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
         self.dismiss(animated: true, completion: {})
     }
     
     
     @IBAction func addNewFood(_ sender: Any) {
         
-        let alertController = UIAlertController(title: "Add New Food", message: "Food info goes here.", preferredStyle: UIAlertControllerStyle.alert)
-        
-        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
-            print("Save")
-            
+        let alertController = UIAlertController(title: "Add New Food", message: "Please enter new food name.", preferredStyle: UIAlertControllerStyle.alert)
+        let newFoodTextField = UITextField()
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default) { (result : UIAlertAction) -> Void in
+            print("Canceld")
         }
+        let okAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.default) { (action: UIAlertAction!) -> Void in
+            let newItem = (alertController.textFields?.first)! as UITextField
+            foodList.list.append(newItem.text!)
+            print("Saved")
+            print("new item:",newItem.text!)
+            self.do_table_refresh()
+        }
+        
+        alertController.addAction(cancelAction)
         alertController.addAction(okAction)
+        alertController.addTextField { (newFoodTextField) -> Void in
+            newFoodTextField.placeholder = "Input here..."
+        }
         self.present(alertController, animated: true, completion: nil)
     }
     
@@ -47,6 +65,14 @@ class PickFoodTableViewController: UITableViewController {
         
         //create a reuseable cell for each food item displayed in the food list
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "itemCell")
+        if selected.items != []{
+            for index in selected.items{
+                print("selected:",index)
+                self.tableView.selectRow(at: [0,index], animated: true, scrollPosition:UITableViewScrollPosition.none)
+                //print(tableView.indexPathsForSelectedRows ?? [])
+            }
+        }
+        
         
         
         // Uncomment the following line to preserve selection between presentations
@@ -70,20 +96,29 @@ class PickFoodTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return foodList.count
+        return foodList.list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemCell", for: indexPath)
-        cell.textLabel?.text = foodList[indexPath.row]
+        cell.textLabel?.text = foodList.list[indexPath.row]
         let bgColorView = UIView()
         bgColorView.backgroundColor = UIColor(red: 168, green: 227, blue: 255)
         cell.selectedBackgroundView = bgColorView
-        
         return cell
     }
     
-    
+    func setSelectedItems(){
+        let indexes = tableView.indexPathsForSelectedRows
+        //clear history and save again
+        selected.items = []
+        if indexes != nil{
+            for index in indexes! {
+                selected.items.append(index[1])
+            }
+            //print(selected.items)
+        }
+    }
     
     /*
      // Override to support conditional editing of the table view.

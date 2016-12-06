@@ -30,6 +30,7 @@
                                         </imageView>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IpE-J1-3Bz">
                                             <rect key="frame" x="12" y="2" width="351" height="130"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="130" id="iKW-4Q-mdw"/>
                                             </constraints>
@@ -483,6 +484,9 @@
                                                 <constraint firstItem="otO-Pc-kjn" firstAttribute="centerY" secondItem="SWW-bS-Ffs" secondAttribute="centerY" id="l40-r6-rhu"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="c44-hQ-JOa" kind="presentation" id="1XS-0R-9FK"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -867,6 +871,7 @@
         <image name="Time" width="18" height="18"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="enb-1y-IaL"/>
+        <segue reference="SCd-am-cpb"/>
+        <segue reference="7j2-r7-llW"/>
     </inferredMetricsTieBreakers>
 </document>
