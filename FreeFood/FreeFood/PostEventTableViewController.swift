@@ -41,38 +41,56 @@ class PostEventTableViewController: UITableViewController {
     @IBAction func submitEvent(_ sender: Any) {
         //get the values in form and construct JSON
         let name = eventName.text!
-        let dateTime = pickerTextField.text!
         let location = eventLocation.text!
         let zipcode = eventZipcode.text!
         let url = eventURL.text!
         let description = eventDescription.text!
+        let date = String(startDate.characters.prefix(10))
+        let startTime = String(startDate.characters.dropFirst(11))
+        let endTime = String(endDate.characters.dropFirst(11))
+        let compareResult = pickerView.date.compare(endPickerView.date as Date)
         //test if user completed required fields
         if name != "" {
-            if dateTime != ""{
+            if startDate != "" && endDate != ""{
                 if location != "" {
                     if zipcode != "" {
                         if selected.items.count >= 1 {
-                            for foodIndex in selected.items{
-                                foodItems.append(foodList.list[foodIndex])
+                            if compareResult == ComparisonResult.orderedAscending {
+                                print("\(startTime) is earlier than \(endTime)")
+                                for foodIndex in selected.items{
+                                    foodItems.append(foodList.list[foodIndex])
+                                }
+                                let eventObject: AnyObject = [
+                                    "event_name":name ,
+                                    "location": location ,
+                                    "zip_code": zipcode ,
+                                    "date":date,
+                                    "start_time": startTime,
+                                    "end_time": endTime,
+                                    "foods": foodItems,
+                                    "description":description ,
+                                    "url": url
+                                    ] as AnyObject
+                                
+                                _ = JSONSerialization.isValidJSONObject(eventObject) // should be true
+                                print(eventObject)
+                                //post JSON to server
+                                
+                                //submit success alert and back to main screen
+                                alert(message: "submit successful", "submitted!")
+                                eventName.text! = ""
+                                pickerTextField.text! = ""
+                                endPickerTextField.text! = ""
+                                eventLocation.text! = ""
+                                eventZipcode.text! = ""
+                                eventURL.text! = ""
+                                eventDescription.text! = ""
+                                foodItems = []
+                                selected.items = []
+                                do_table_refresh()
+                            }else{
+                                alert(message: "The end time must be later than start time", "submit failed")
                             }
-                            let eventObject:AnyObject = [
-                                "event_name":name ,
-                                "location": location ,
-                                "zip_code": zipcode ,
-                                "date":"11/16/2016",
-                                "start_time": "12:30",
-                                "end_time": "13:30",
-                                "foods": foodItems,
-                                "description":description ,
-                                "url": url
-                                ] as AnyObject
-                            
-                            _ = JSONSerialization.isValidJSONObject(eventObject) // should be true
-                            print(eventObject)
-                            //post JSON to server
-                            
-                            //submit success alert and back to main screen
-                            alert(message: "submit successful", "submitted!")
                         } else{
                             alert(message: "You must enter at least one food item to post the event", "submit failed")
                         }
@@ -138,7 +156,11 @@ class PostEventTableViewController: UITableViewController {
             .font = UIFont.systemFont(ofSize: 13.0, weight: UIFontWeightMedium)
         //set up date picker for the event time text field
         pickerView = UIDatePicker()
+        //prevent the user from choosing a past date
+        pickerView.minimumDate = NSDate() as Date
         endPickerView = UIDatePicker()
+        //prevent the user from choosing a past date
+        endPickerView.minimumDate = NSDate() as Date
         pickerTextField.inputView = pickerView
         endPickerTextField.inputView = endPickerView
         do_table_refresh()
@@ -178,7 +200,7 @@ class PostEventTableViewController: UITableViewController {
                 
                 //fetch the corresponding name of the food item and populate many rows
                 cell.textLabel?.text = foodList.list[selected.items[indexPath.row]]
-                
+                //disable the selected row highlight
                 return cell
             }else{ //for the 1st section (the more static one)
                 //                let cellS = super.tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
@@ -207,7 +229,7 @@ class PostEventTableViewController: UITableViewController {
             return super.tableView(tableView, indentationLevelForRowAt: indexPath)
         }
     }
-//    disable highlight for each row
+    //    disable highlight for each row
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Change the selected background view of the cell.
         tableView.deselectRow(at: indexPath, animated: true)
@@ -249,5 +271,4 @@ class FoodList{
 }
 
 var foodList = FoodList(["Assorted Desserts","Barbeque","Bread","Burrito","Burger","Cake","Coffee","Coke","Cookie","Donut","Fries","Fruit","Hotdog","Ice Cream","Juice","Muffin","Pasta","Pastry","Pie","Pizza","Rice","Sandwich","Salad","Taco"])
-
 
