@@ -143,8 +143,10 @@ class PostEventTableViewController: UITableViewController {
         })
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         //create a reuseable cell for each food item displayed in the food list
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "foodItemCell")
@@ -166,9 +168,28 @@ class PostEventTableViewController: UITableViewController {
         endPickerTextField.inputView = endPickerView
         eventName.clearButtonMode = .whileEditing
         eventZipcode.clearButtonMode = .whileEditing
+//        eventZipcode.returnKeyType = .next
         eventURL.clearButtonMode = .whileEditing
+//        eventURL.returnKeyType = .next
         eventLocation.clearButtonMode = .whileEditing
+//        eventLocation.returnKeyType = .next
         eventDescription.clearButtonMode = .whileEditing
+
+
+//        self.eventLocation.nextField = self.eventZipcode
+//        self.eventZipcode.nextField = self.eventURL
+//        self.eventURL.nextField = self.eventDescription
+        
+        let toolbarDone = UIToolbar.init()
+        toolbarDone.sizeToFit()
+//        let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done,target: self, action: #selector(PostEventTableViewController.doneButton_Clicked(_:)))
+        
+//        toolbarDone.items = [barBtnDone] // You can even add cancel button too
+        pickerTextField.inputAccessoryView = toolbarDone
+        endPickerTextField.inputAccessoryView = toolbarDone
+        
+        
+        
         do_table_refresh()
         NotificationCenter.default.addObserver(self, selector: #selector(PostEventTableViewController.updateTable), name:NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
     }
@@ -267,6 +288,9 @@ var selected = SelectedList([])
 //        }
 //    }
 //}
+
+
+
 
 
 class FoodList{
