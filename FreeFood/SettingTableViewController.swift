@@ -11,9 +11,11 @@ import UIKit
 class SettingTableViewController: UITableViewController {
 
     @IBOutlet weak var toggle: UISwitch!
+    @IBOutlet weak var zipcode: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        zipcode.clearButtonMode = .whileEditing
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
