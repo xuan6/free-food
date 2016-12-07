@@ -27,11 +27,12 @@ class PostEventTableViewController: UITableViewController {
     
     @IBOutlet weak var eventDescription: UITextField!
     
+    
+    
     var startDate: String=""
     var endDate: String=""
     var pickerView = UIDatePicker()
     var endPickerView = UIDatePicker()
-    
     var dateFormatter = DateFormatter()
     
     func submitFailedAlert(){
@@ -163,6 +164,11 @@ class PostEventTableViewController: UITableViewController {
         endPickerView.minimumDate = NSDate() as Date
         pickerTextField.inputView = pickerView
         endPickerTextField.inputView = endPickerView
+        eventName.clearButtonMode = .whileEditing
+        eventZipcode.clearButtonMode = .whileEditing
+        eventURL.clearButtonMode = .whileEditing
+        eventLocation.clearButtonMode = .whileEditing
+        eventDescription.clearButtonMode = .whileEditing
         do_table_refresh()
         NotificationCenter.default.addObserver(self, selector: #selector(PostEventTableViewController.updateTable), name:NSNotification.Name(rawValue: "NotificationIdentifier"), object: nil)
     }
