@@ -29,6 +29,8 @@ class DefaultSettingViewController: UIViewController {
         
         defaultData.userscreen = userDefault.integer(forKey: "initialTab")
         
+        userDefault.synchronize()
+        
         self.dismiss(animated: true, completion: {})
         
         print(defaultData.userscreen)

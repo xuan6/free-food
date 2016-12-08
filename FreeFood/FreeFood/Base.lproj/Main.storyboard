@@ -860,7 +860,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Setting" id="QcG-cJ-m2S"/>
                     <connections>
-                        <outlet property="inititalScreen" destination="nLj-H6-qtH" id="u4w-Qq-j3Q"/>
+                        <outlet property="initialScreen" destination="nLj-H6-qtH" id="4kz-br-XGA"/>
                         <outlet property="userZipcode" destination="aCZ-3O-uvc" id="h7q-iB-eMz"/>
                     </connections>
                 </tableViewController>

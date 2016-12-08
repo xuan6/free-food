@@ -9,14 +9,19 @@
 import UIKit
 
 let userDefault = UserDefaults.standard
-var intValue = userDefault.integer(forKey: "initial")
-//var userZip = userDefault.string(forKey: "zipcode")
+
 
 class TabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.selectedIndex = intValue
+        var tabindex = 0
+        if defaultData.checktab == false{
+            tabindex = 0
+        }else{
+            tabindex = defaultData.userscreen
+        }
+        self.tabBarController?.selectedIndex = tabindex
         
 
         // Do any additional setup after loading the view.

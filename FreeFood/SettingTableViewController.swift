@@ -9,46 +9,70 @@
 import UIKit
 
 class defaultData {
-    static var userscreen:Int = 0 //default screen = food
-    static var userzip:String = "98105" //default zip = 98105
+    static var userscreen=userDefault.integer(forKey: "initialTab")//default screen = food
+    static var userzip=userDefault.string(forKey: "zipcode") //default zip = 98105
+    
+    static var checktab = false
+    static var checkzip = false
 
+}
+
+func setdefault(){
+//    let checkDefaultZip = userDefault.string(forKey: "zipcode")
+//    let checkDefaultTab = userDefault.integer(forKey: "initialTab")
+    
+    if (defaultData.userzip != nil){
+        defaultData.checkzip = true
+    }else{
+    userDefault.set("98105",forKey:"zipcode")
+    }
+    
+    if (defaultData.userscreen != nil){
+        defaultData.checktab = true
+    }else{
+    userDefault.set(0, forKey:"initialTab")
+    }
+    
 }
 
 class SettingTableViewController: UITableViewController {
     //set default displayed strings
-    var zipDisplay = "98105"
-    var screenDisplay = "Food"
+
     
-    @IBOutlet weak var inititalScreen: UILabel!
+    
+    @IBOutlet weak var initialScreen: UILabel!
+   
    
     @IBOutlet weak var userZipcode: UILabel!
     
     //refresh data before this view is visible
     override func viewWillAppear(_ animated: Bool) {
-        zipDisplay = defaultData.userzip
+        self.tableView.reloadData()
         switch(defaultData.userscreen){
         case 0:
-            screenDisplay = "Food"
+            initialScreen.text = "Food"
         case 1:
-            screenDisplay = "Event"
+            initialScreen.text = "Event"
         default:
-            screenDisplay = "Food"
+            initialScreen.text = "Food"
         }
-        self.tableView.reloadData()
-        print(screenDisplay)
-        print(zipDisplay)
-        userZipcode.text = zipDisplay
-        inititalScreen.text = screenDisplay
-
-
+        userZipcode.text = defaultData.userzip!
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setdefault()
         //display user zipcode
-        self.tableView.reloadData()
-        userZipcode.text = zipDisplay
-        inititalScreen.text = screenDisplay
+        userZipcode.text = defaultData.userzip!
+        switch(defaultData.userscreen){
+        case 0:
+            initialScreen.text = "Food"
+        case 1:
+            initialScreen.text = "Event"
+        default:
+            initialScreen.text = "Food"
+        }
+        
         
         
         
