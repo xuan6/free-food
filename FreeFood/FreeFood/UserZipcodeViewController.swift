@@ -24,6 +24,7 @@ class UserZipcodeViewController: UIViewController {
         if (zipInput != "") {
             userDefault.set(zipInput, forKey: "zipcode")
             defaultData.userzip = userDefault.string(forKey: "zipcode")!
+            
             userDefault.synchronize()
             
             self.dismiss(animated: true, completion: {})
@@ -37,8 +38,6 @@ class UserZipcodeViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     
         }
-        
-        print(defaultData.userzip)
         
     
     }

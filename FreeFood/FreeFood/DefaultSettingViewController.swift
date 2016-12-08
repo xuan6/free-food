@@ -22,28 +22,33 @@ class DefaultSettingViewController: UIViewController {
         
         //        toogle to change the user default data
         if screenSwtich.isOn{
-            userDefault.set(1, forKey: "initialTab")
+            userDefault.set(2, forKey: "initialTab")
         } else {
-            userDefault.set(0, forKey: "initialTab")
+            userDefault.set(1, forKey: "initialTab")
         }
         
         defaultData.userscreen = userDefault.integer(forKey: "initialTab")
         
         userDefault.synchronize()
         
+        
         self.dismiss(animated: true, completion: {})
         
-        print(defaultData.userscreen)
+        
         
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        if defaultData.userscreen == 0 {
+        switch(defaultData.userscreen){
+        case 1:
             screenSwtich.setOn(false, animated: true)
-        }else{
+        case 2:
             screenSwtich.setOn(true, animated: true)
+        default:
+            screenSwtich.setOn(false, animated: true)
         }
 
+       
         // Do any additional setup after loading the view.
     }
 

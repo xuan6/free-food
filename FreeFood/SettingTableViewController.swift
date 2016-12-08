@@ -18,8 +18,6 @@ class defaultData {
 }
 
 func setdefault(){
-//    let checkDefaultZip = userDefault.string(forKey: "zipcode")
-//    let checkDefaultTab = userDefault.integer(forKey: "initialTab")
     
     if (defaultData.userzip != nil){
         defaultData.checkzip = true
@@ -27,18 +25,32 @@ func setdefault(){
     userDefault.set("98105",forKey:"zipcode")
     }
     
-    if (defaultData.userscreen != nil){
+    if (defaultData.userscreen != 0){ //if not set, the default is set to 0
+        //if equals to 0, which means it is set
         defaultData.checktab = true
     }else{
-    userDefault.set(0, forKey:"initialTab")
+    userDefault.set(1, forKey:"initialTab")
     }
     
 }
 
 class SettingTableViewController: UITableViewController {
-    //set default displayed strings
-
+    //set displayed data
     
+    func displayData(){
+        userZipcode.text = defaultData.userzip!
+        switch(defaultData.userscreen){
+        case 1:
+            initialScreen.text = "Food"
+        case 2:
+            initialScreen.text = "Event"
+        default:
+            initialScreen.text = "Food"
+        }
+    }
+
+
+
     
     @IBOutlet weak var initialScreen: UILabel!
    
@@ -46,33 +58,20 @@ class SettingTableViewController: UITableViewController {
     @IBOutlet weak var userZipcode: UILabel!
     
     //refresh data before this view is visible
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
+        
         self.tableView.reloadData()
-        switch(defaultData.userscreen){
-        case 0:
-            initialScreen.text = "Food"
-        case 1:
-            initialScreen.text = "Event"
-        default:
-            initialScreen.text = "Food"
-        }
-        userZipcode.text = defaultData.userzip!
+        displayData()
+        
+        
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setdefault()
+
         //display user zipcode
-        userZipcode.text = defaultData.userzip!
-        switch(defaultData.userscreen){
-        case 0:
-            initialScreen.text = "Food"
-        case 1:
-            initialScreen.text = "Event"
-        default:
-            initialScreen.text = "Food"
-        }
-        
+        displayData()
         
         
         

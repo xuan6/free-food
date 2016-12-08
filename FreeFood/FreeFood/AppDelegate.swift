@@ -15,7 +15,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        if self.window!.rootViewController as? UITabBarController != nil {
+            let tabbarController = self.window!.rootViewController as! UITabBarController
+            
+            setdefault()
+            var selectedIndex=Int()
+            var freshLaunch = true
+            if freshLaunch == true { //only launch the default tab at fresh launch
+                freshLaunch = false
+                if defaultData.checktab == false{//haven init userdefault then use system default
+                    selectedIndex = 0
+                }else{
+                    selectedIndex = defaultData.userscreen-1
+                }
+                tabbarController.selectedIndex = selectedIndex
+                print(defaultData.checktab)
+                print( tabbarController.selectedIndex)
+                }
+            
+        }
+        else{
+            print("couldn't reach rootViewController named UITabBarController")
+        }
         return true
     }
 
