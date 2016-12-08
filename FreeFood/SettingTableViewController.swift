@@ -37,6 +37,8 @@ class SettingTableViewController: UITableViewController {
         self.tableView.reloadData()
         print(screenDisplay)
         print(zipDisplay)
+        userZipcode.text = zipDisplay
+        inititalScreen.text = screenDisplay
 
 
     }
@@ -44,6 +46,7 @@ class SettingTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //display user zipcode
+        self.tableView.reloadData()
         userZipcode.text = zipDisplay
         inititalScreen.text = screenDisplay
         
