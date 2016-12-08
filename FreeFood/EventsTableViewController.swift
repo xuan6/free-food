@@ -14,11 +14,13 @@ class Event{
     var eventLocation:String
     var eventFoods:String
     var eventTime:String
-    init(eventName:String, eventTime:String, eventLocation:String, eventFoods:String){
+    var eventDate:String
+    init(eventName:String, eventTime:String, eventLocation:String, eventFoods:String, eventDate:String){
         self.eventName=eventName
         self.eventTime=eventTime
         self.eventLocation=eventLocation
         self.eventFoods=eventFoods
+        self.eventDate=eventDate
     }
 }
 //test data ends here
@@ -31,8 +33,8 @@ class EventsTableViewController: UITableViewController {
     //test data starts here
     func testLoadEvents(){
         
-        let event1 = Event(eventName: "Info Session Amazon", eventTime: "1:30am Nov 29", eventLocation: "MGH 143", eventFoods: "Pizza, Coke")
-        let event2 = Event(eventName: "Public Lecture", eventTime: "12:30pm Nov 29", eventLocation: "MGH 143", eventFoods: "Sandwich")
+        let event1 = Event(eventName: "Info Session Amazon",eventTime: "11:30-13:30", eventLocation: "MGH 143", eventFoods: "Pizza, Coke", eventDate:"12/2")
+        let event2 = Event(eventName: "Public Lecture", eventTime: "12:30-14:00", eventLocation: "MGH 143", eventFoods: "Sandwich",eventDate:"12/3")
         events += [event1, event2]
         
     }

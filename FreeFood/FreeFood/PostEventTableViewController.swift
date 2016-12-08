@@ -180,11 +180,16 @@ class PostEventTableViewController: UITableViewController {
 //        self.eventZipcode.nextField = self.eventURL
 //        self.eventURL.nextField = self.eventDescription
         
+        
+        //add toolbar 'done' to date picker, so when we trigger date picker we can tap 'done' button to dismiss picker
         let toolbarDone = UIToolbar.init()
         toolbarDone.sizeToFit()
-//        let barBtnDone = UIBarButtonItem.init(barButtonSystemItem: UIBarButtonSystemItem.Done,target: self, action: #selector(PostEventTableViewController.doneButton_Clicked(_:)))
         
-//        toolbarDone.items = [barBtnDone] // You can even add cancel button too
+        let doneButton = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(UIViewController.dismissKeyboard))
+        
+        //hide keyboard when tap elsewhere
+        self.hideKeyboardWhenTappedAround()
+        toolbarDone.items = [doneButton] // we can even add cancel button too
         pickerTextField.inputAccessoryView = toolbarDone
         endPickerTextField.inputAccessoryView = toolbarDone
         
@@ -289,9 +294,17 @@ var selected = SelectedList([])
 //    }
 //}
 
-
-
-
+//hide keyboard when tap elsewhere
+extension UIViewController {
+    func hideKeyboardWhenTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+}
 
 class FoodList{
     var list: [String]
