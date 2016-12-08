@@ -15,28 +15,41 @@ class defaultData {
 }
 
 class SettingTableViewController: UITableViewController {
+    //set default displayed strings
+    var zipDisplay = "98105"
+    var screenDisplay = "Food"
     
     @IBOutlet weak var inititalScreen: UILabel!
    
     @IBOutlet weak var userZipcode: UILabel!
     
+    //refresh data before this view is visible
+    override func viewWillAppear(_ animated: Bool) {
+        zipDisplay = defaultData.userzip
+        switch(defaultData.userscreen){
+        case 0:
+            screenDisplay = "Food"
+        case 1:
+            screenDisplay = "Event"
+        default:
+            screenDisplay = "Food"
+        }
+        self.tableView.reloadData()
+        print(screenDisplay)
+        print(zipDisplay)
+
+
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //display user zipcode
-        userZipcode.text = defaultData.userzip
-        
-        //display user default screen
-        switch(defaultData.userscreen){
-        case 0:
-            inititalScreen.text = "Food"
-        case 1:
-            inititalScreen.text = "Event"
-        default:
-            inititalScreen.text = "Food"
-        }
+        userZipcode.text = zipDisplay
+        inititalScreen.text = screenDisplay
         
         
-        print(defaultData.userscreen)
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
