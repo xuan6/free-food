@@ -14,8 +14,11 @@ class defaultData {
     
     static var checktab = false
     static var checkzip = false
+    static var freshLaunch = true
+    static var checkLaunch = 0
 
 }
+
 
 func setdefault(){
     

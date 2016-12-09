@@ -21,18 +21,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             setdefault()
             var selectedIndex=Int()
-            var freshLaunch = true
-            if freshLaunch == true { //only launch the default tab at fresh launch
-                freshLaunch = false
+            
+            if defaultData.freshLaunch == true { //only launch the default tab at fresh launch
+                defaultData.freshLaunch = false
                 if defaultData.checktab == false{//haven init userdefault then use system default
                     selectedIndex = 0
                 }else{
                     selectedIndex = defaultData.userscreen-1
                 }
-                self.edgesForExtendedLayout = UIRectEdgeNone
+                
                 tabbarController.selectedIndex = selectedIndex
-                print(defaultData.checktab)
-                print( tabbarController.selectedIndex)
+  
                 }
             
         }

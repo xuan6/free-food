@@ -27,7 +27,7 @@ class Event{
 
 
 class EventsTableViewController: UITableViewController {
-    
+    var count = 0
     var events = [Event]()
     
     //test data starts here
@@ -40,9 +40,14 @@ class EventsTableViewController: UITableViewController {
     }
     //test data ends here
 
+    
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         testLoadEvents()
+        
+        self.tableView.contentInset=UIEdgeInsetsMake(66, 0, 0, 0)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
