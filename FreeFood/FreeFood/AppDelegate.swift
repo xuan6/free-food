@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }else{
                     selectedIndex = defaultData.userscreen-1
                 }
+                self.edgesForExtendedLayout = UIRectEdgeNone
                 tabbarController.selectedIndex = selectedIndex
                 print(defaultData.checktab)
                 print( tabbarController.selectedIndex)

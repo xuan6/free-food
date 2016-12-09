@@ -868,7 +868,7 @@
             </objects>
             <point key="canvasLocation" x="2693.5999999999999" y="933.28335832083962"/>
         </scene>
-        <!--Initial Screen-->
+        <!--Change Initial Screen-->
         <scene sceneID="Wvr-sd-l8P">
             <objects>
                 <viewController id="WWK-yW-buU" customClass="DefaultSettingViewController" customModule="FreeFood" customModuleProvider="target" sceneMemberID="viewController">
@@ -881,13 +881,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set initial screen to Events" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y9c-1T-wQL">
-                                <rect key="frame" x="16" y="84" width="213" height="22"/>
+                                <rect key="frame" x="16" y="94" width="213" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Dxr-7G-8MN">
-                                <rect key="frame" x="310" y="79" width="51" height="31"/>
+                                <rect key="frame" x="310" y="89" width="51" height="31"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Focus more on events than food? Turn on the switch to make Event list come first." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iG0-Nj-RaV">
                                 <rect key="frame" x="16" y="135" width="343" height="53"/>
@@ -904,10 +904,10 @@
                             <constraint firstAttribute="trailing" secondItem="Dxr-7G-8MN" secondAttribute="trailing" constant="16" id="XEU-Wr-hKh"/>
                             <constraint firstAttribute="trailing" secondItem="iG0-Nj-RaV" secondAttribute="trailing" constant="16" id="Y4i-pj-MEY"/>
                             <constraint firstItem="Y9c-1T-wQL" firstAttribute="leading" secondItem="7Vr-0P-Hrj" secondAttribute="leadingMargin" id="oyC-0Z-9yV"/>
-                            <constraint firstItem="Dxr-7G-8MN" firstAttribute="top" secondItem="qfL-BJ-uWM" secondAttribute="bottom" constant="15" id="rEM-Pt-vqj"/>
+                            <constraint firstItem="Dxr-7G-8MN" firstAttribute="top" secondItem="qfL-BJ-uWM" secondAttribute="bottom" constant="25" id="rEM-Pt-vqj"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Initial Screen" id="Z4R-4w-Yd7">
+                    <navigationItem key="navigationItem" title="Change Initial Screen" id="Z4R-4w-Yd7">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="KGB-0V-GFW">
                             <connections>
                                 <action selector="cancel:" destination="WWK-yW-buU" id="g86-Jl-MsC"/>
@@ -1001,7 +1001,7 @@
             </objects>
             <point key="canvasLocation" x="3721" y="1093"/>
         </scene>
-        <!--Change My Zip Code -->
+        <!--Change Zip Code -->
         <scene sceneID="HPv-cT-z2U">
             <objects>
                 <viewController id="RDt-Ou-gB8" customClass="UserZipcodeViewController" customModule="FreeFood" customModuleProvider="target" sceneMemberID="viewController">
@@ -1014,10 +1014,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New zipcode goes here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pVP-MN-FSv">
-                                <rect key="frame" x="20" y="79" width="335" height="30"/>
+                                <rect key="frame" x="20" y="89" width="335" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="By specifying zipcode, you can get the food and events that near you." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HLK-k9-KLq">
                                 <rect key="frame" x="20" y="134" width="335" height="52"/>
@@ -1031,12 +1031,12 @@
                             <constraint firstItem="HLK-k9-KLq" firstAttribute="top" secondItem="pVP-MN-FSv" secondAttribute="bottom" constant="25" id="6ND-u0-px2"/>
                             <constraint firstAttribute="trailing" secondItem="pVP-MN-FSv" secondAttribute="trailing" constant="20" id="SS8-je-ld8"/>
                             <constraint firstItem="HLK-k9-KLq" firstAttribute="leading" secondItem="Xu3-mx-24I" secondAttribute="leading" constant="20" id="Tbk-Wd-kG7"/>
-                            <constraint firstItem="pVP-MN-FSv" firstAttribute="top" secondItem="JXL-SP-8Wi" secondAttribute="bottom" constant="15" id="XD5-GM-yde"/>
+                            <constraint firstItem="pVP-MN-FSv" firstAttribute="top" secondItem="JXL-SP-8Wi" secondAttribute="bottom" constant="25" id="XD5-GM-yde"/>
                             <constraint firstItem="pVP-MN-FSv" firstAttribute="leading" secondItem="Xu3-mx-24I" secondAttribute="leading" constant="20" id="ZUi-sz-gb4"/>
                             <constraint firstAttribute="trailing" secondItem="HLK-k9-KLq" secondAttribute="trailing" constant="20" id="sdT-4g-tOv"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Change My Zip Code " id="pf9-Kz-7sQ">
+                    <navigationItem key="navigationItem" title="Change Zip Code " id="pf9-Kz-7sQ">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="nIF-qD-48b">
                             <connections>
                                 <action selector="cancel:" destination="RDt-Ou-gB8" id="lgz-BU-cDC"/>
