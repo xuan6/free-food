@@ -9,7 +9,8 @@ Contains most of the front-end and client side code.
 Check the [integrated version](https://github.com/27rohan/Free-Food).
 
 ## Contributors
-- [Rohan](https://github.com/27rohan)
+Thanks my nice team!
+- [Rohan Thakkar](https://github.com/27rohan)
 - [Shuyi Xiong](https://github.com/zoexiong)
 - Xuan Liu
 - [Arjun Lalwani](https://github.com/arjun-lalwani)
