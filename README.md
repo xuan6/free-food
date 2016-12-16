@@ -3,7 +3,7 @@
 An iOS App connecting hosts & participants with a platform where users can post & explore interesting events serving free food near their location.
 
 ## This repo
-contains most of the front-end and client side part.
+Contains most of the front-end and client side code.
 
 ## Completed project repo
 Check the [integrated version](https://github.com/27rohan/Free-Food).
